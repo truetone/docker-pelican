@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+
+  web:
+    image: python:buster
+    build:
+      context: .
+    volumes:
+      - '.:/usr/src/app'
+    ports:
+      - 8000:8000
+    command: bash -c "pelican content && pelican --autoreload --listen -b '0.0.0.0'"
